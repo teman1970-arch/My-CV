@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eman Ali Al-Halki | Senior English Educator</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            500: '#d97706', // Warm amber/gold for educational distinction
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Toast Notification Container (Replaces alert) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 print:hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-brand-800 text-white flex items-center justify-center font-serif font-bold text-lg">
+                    E
+                </div>
+                <span class="font-semibold text-slate-900 dark:text-white tracking-tight hidden sm:inline">Eman Ali Al-Halki</span>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Profile</a>
+                <a href="#experience" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Experience</a>
+                <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Skills & Education</a>
+                <a href="#details" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Personal Details</a>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="toggleTheme()" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="window.print()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-brand-800 hover:bg-brand-900 text-white text-sm font-medium shadow-sm transition">
+                    <i class="fas fa-print"></i>
+                    <span class="hidden sm:inline">Print / PDF</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
+
+        <!-- Hero Section -->
+        <header class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/70 dark:border-slate-700/70 relative overflow-hidden">
+            <!-- Subtle Decorative Background Element -->
+            <div class="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-brand-50 dark:bg-brand-900/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
+                <!-- Profile Photo with Monogram Fallback -->
+                <div class="flex-shrink-0">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-brand-800 to-brand-900 text-white overflow-hidden shadow-lg border-4 border-white dark:border-slate-700 relative">
+                        <img 
+                            src="https://raw.githubusercontent.com/teman1970-arch/ID-photos-/main/New%20Photo.jpg" 
+                            alt="Eman Ali Al-Halki" 
+                            class="w-full h-full object-cover object-top"
+                            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                        >
+                        <div class="hidden w-full h-full flex flex-col items-center justify-center">
+                            <span class="font-serif text-4xl sm:text-5xl font-bold tracking-wider">EA</span>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-100 mt-1">Educator</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Info -->
+                <div class="flex-1 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-800 dark:text-brand-300 text-xs font-semibold mb-3">
+                        <i class="fas fa-award text-accent-500"></i>
+                        <span>28 Years of Teaching Excellence in the UAE</span>
+                    </div>
+                    <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
+                        Eman Ali Al-Halki
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-medium mt-1">
+                        Senior English Language Educator & Curriculum Specialist
+                    </p>
+
+                    <!-- Interactive Contact Bar -->
+                    <div class="mt-6 flex flex-wrap items-center justify-center md:justify-start gap-3">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700/60 text-sm text-slate-700 dark:text-slate-200">
+                            <i class="fas fa-map-marker-alt text-brand-600 dark:text-brand-400"></i>
+                            <span>Khorfakkan, Sharjah - UAE</span>
+                        </div>
+
+                        <button onclick="copyText('0505907290', 'Phone number')" class="group inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700/60 hover:bg-brand-50 dark:hover:bg-brand-900/30 text-sm text-slate-700 dark:text-slate-200 transition cursor-pointer" title="Click to copy phone number">
+                            <i class="fas fa-phone text-brand-600 dark:text-brand-400"></i>
+                            <span>0505907290</span>
+                            <i class="far fa-copy text-xs text-slate-400 group-hover:text-brand-600 transition"></i>
+                        </button>
+
+                        <button onclick="copyText('Teman1970@gmail.com', 'Email address')" class="group inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700/60 hover:bg-brand-50 dark:hover:bg-brand-900/30 text-sm text-slate-700 dark:text-slate-200 transition cursor-pointer" title="Click to copy email">
+                            <i class="fas fa-envelope text-brand-600 dark:text-brand-400"></i>
+                            <span>Teman1970@gmail.com</span>
+                            <i class="far fa-copy text-xs text-slate-400 group-hover:text-brand-600 transition"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Career Metrics -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-100 dark:border-slate-700/70">
+                <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-700/30 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-brand-800 dark:text-brand-400">24+</div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium mt-0.5">Years Full-Time Teacher</div>
+                </div>
+                <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-700/30 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-brand-800 dark:text-brand-400">4</div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium mt-0.5">Years Substitute Educator</div>
+                </div>
+                <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-700/30 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-brand-800 dark:text-brand-400">7</div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium mt-0.5">UAE Gov. Schools</div>
+                </div>
+                <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-700/30 text-center">
+                    <div class="text-2xl sm:text-3xl font-bold text-brand-800 dark:text-brand-400">K-12</div>
+                    <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium mt-0.5">Cycles 1, 2 & High School</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Profile & Teaching Philosophy -->
+        <section id="about" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/70 dark:border-slate-700/70">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 flex items-center justify-center">
+                    <i class="fas fa-user-tie text-lg"></i>
+                </div>
+                <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">Professional Profile</h2>
+            </div>
+            
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                Dedicated, resourceful, and goal-driven professional educator with a solid commitment to the social and academic growth and development of every child. Highly motivated and enthusiastic, bringing an accommodating and versatile approach to develop inspiring hands-on lessons that capture a child's imagination and breed success.
+            </p>
+
+            <!-- Core Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 border border-slate-100 dark:border-slate-700/50">
+                    <i class="fas fa-chalkboard-teacher text-brand-600 dark:text-brand-400 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Stimulating Classroom Environment</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Committed to creating an encouraging atmosphere where all children feel empowered to become successful learners.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 border border-slate-100 dark:border-slate-700/50">
+                    <i class="fas fa-user-check text-brand-600 dark:text-brand-400 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Individualized Instruction</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Demonstrated ability to remain flexible and tailor instruction consistently based on each student's unique needs, learning style, and interests.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 border border-slate-100 dark:border-slate-700/50">
+                    <i class="fas fa-hands-helping text-brand-600 dark:text-brand-400 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Stakeholder Collaboration</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Superior interpersonal and communication skills to establish cooperative, meaningful relationships with students, families, staff, and administration.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 border border-slate-100 dark:border-slate-700/50">
+                    <i class="fas fa-lightbulb text-brand-600 dark:text-brand-400 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Inspiring Hands-On Lessons</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Talent for designing engaging, active lessons that spark curiosity and foster sustainable academic progress.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Experience Timeline -->
+        <section id="experience" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/70 dark:border-slate-700/70">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">Teaching Experience</h2>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">UAE Government Schools (1993 – 2021)</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Filter Buttons -->
+                <div class="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-700/70 self-start sm:self-auto print:hidden" role="group">
+                    <button onclick="filterExperience('all')" id="btn-all" class="filter-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium bg-white dark:bg-slate-800 text-brand-800 dark:text-white shadow-sm transition">
+                        All Roles (8)
+                    </button>
+                    <button onclick="filterExperience('fulltime')" id="btn-fulltime" class="filter-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 transition">
+                        Full-Time (24 Yrs)
+                    </button>
+                    <button onclick="filterExperience('substitute')" id="btn-substitute" class="filter-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 transition">
+                        Substitute (4 Yrs)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div id="experience-list" class="relative border-l-2 border-slate-200 dark:border-slate-700 ml-3 sm:ml-4 space-y-6 py-2">
+                <!-- Populated dynamically via JS for clean filtering -->
+            </div>
+        </section>
+
+        <!-- Education, Skills & Languages Grid -->
+        <div id="skills" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Skills & Pedagogy (2 Columns on Desktop) -->
+            <section class="lg:col-span-2 bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/70 dark:border-slate-700/70">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-lg"></i>
+                    </div>
+                    <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">Pedagogical & Technical Skills</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-700/20">
+                        <div class="flex items-center gap-2.5 text-brand-700 dark:text-brand-400 font-semibold mb-2">
+                            <i class="fas fa-tablet-alt"></i>
+                            <h3>Smart Learning Program</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">
+                            Certified proficiency in the <strong>Sheikh Mohammad Bin Rashid Smart Learning Program</strong>, integrating digital tools into daily classroom instruction.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-700/20">
+                        <div class="flex items-center gap-2.5 text-brand-700 dark:text-brand-400 font-semibold mb-2">
+                            <i class="fas fa-users-cog"></i>
+                            <h3>Active Learning Strategies</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">
+                            Expertly applying student-centered, active learning methodologies and effective teaching frameworks to maximize engagement.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-700/20">
+                        <div class="flex items-center gap-2.5 text-brand-700 dark:text-brand-400 font-semibold mb-2">
+                            <i class="fas fa-rocket"></i>
+                            <h3>21st-Century Strategies</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">
+                            Fostering critical thinking, creativity, collaboration, and communication tailored for modern educational standards.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-700/20">
+                        <div class="flex items-center gap-2.5 text-brand-700 dark:text-brand-400 font-semibold mb-2">
+                            <i class="fas fa-desktop"></i>
+                            <h3>ICDL & Virtual Teaching</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">
+                            International Computer Driving License (ICDL) certified, with proven experience delivering live online instruction via <strong>Microsoft Teams</strong>.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education & Languages (1 Column on Desktop) -->
+            <div class="space-y-6">
+                <!-- Education Card -->
+                <section class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-sm border border-slate-200/70 dark:border-slate-700/70">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-lg"></i>
+                        </div>
+                        <h2 class="font-serif text-xl font-bold text-slate-900 dark:text-white">Education</h2>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-brand-50/60 dark:bg-brand-900/20 border border-brand-100 dark:border-brand-800/40">
+                        <h3 class="font-bold text-slate-900 dark:text-white">Bachelor in English Literature</h3>
+                        <p class="text-sm text-brand-800 dark:text-brand-300 font-medium mt-1">
+                            <i class="fas fa-university mr-1.5"></i>Damascus University
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Languages Card -->
+                <section class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-sm border border-slate-200/70 dark:border-slate-700/70">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 flex items-center justify-center">
+                            <i class="fas fa-language text-lg"></i>
+                        </div>
+                        <h2 class="font-serif text-xl font-bold text-slate-900 dark:text-white">Languages</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span class="text-slate-800 dark:text-slate-200">Arabic</span>
+                                <span class="text-slate-500 dark:text-slate-400 text-xs">Mother Tongue (Read • Write • Speak)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2">
+                                <div class="bg-brand-700 dark:bg-brand-500 h-2 rounded-full w-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span class="text-slate-800 dark:text-slate-200">English</span>
+                                <span class="text-slate-500 dark:text-slate-400 text-xs">Fluent (Read • Write • Speak)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2">
+                                <div class="bg-brand-700 dark:bg-brand-500 h-2 rounded-full w-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Personal Details Section -->
+        <section id="details" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/70 dark:border-slate-700/70">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 flex items-center justify-center">
+                    <i class="fas fa-id-card text-lg"></i>
+                </div>
+                <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">Personal Details</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 flex items-center gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shadow-sm">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Date of Birth</div>
+                        <div class="text-sm font-semibold text-slate-900 dark:text-white">15th November 1970</div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 flex items-center gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shadow-sm">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Nationality</div>
+                        <div class="text-sm font-semibold text-slate-900 dark:text-white">Syrian</div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 flex items-center gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shadow-sm">
+                        <i class="fas fa-venus"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Gender</div>
+                        <div class="text-sm font-semibold text-slate-900 dark:text-white">Female</div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 flex items-center gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shadow-sm">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Marital Status</div>
+                        <div class="text-sm font-semibold text-slate-900 dark:text-white">Married</div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 flex items-center gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shadow-sm">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">UAE Driving License</div>
+                        <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Obtained (Valid)</div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/30 flex items-center gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shadow-sm">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Languages Known</div>
+                        <div class="text-sm font-semibold text-slate-900 dark:text-white">Arabic, English</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-slate-500 dark:text-slate-400 border-t border-slate-200/70 dark:border-slate-800 print:hidden">
+        <p>© 2026 Eman Ali Al-Halki • Khorfakkan, Sharjah, UAE</p>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Structured Experience Data from CV
+        const experienceData = [
+            {
+                school: "Umama School Cycle 2",
+                role: "Substitute English Teacher (Teach for the UAE)",
+                period: "2021",
+                duration: "2 Months",
+                type: "substitute",
+                level: "Cycle 2",
+                mode: "In-Person",
+                description: "Delivered English curriculum instruction and maintained classroom continuity for Cycle 2 students in a UAE government school."
+            },
+            {
+                school: "Khorfakkan School Cycle 1",
+                role: "Substitute English Teacher (Teach for the UAE)",
+                period: "2019 – 2020",
+                duration: "2 Months",
+                type: "substitute",
+                level: "Cycle 1",
+                mode: "Online (Microsoft Teams)",
+                description: "Conducted interactive remote English lessons via Microsoft Teams, adapting hands-on activities for young Cycle 1 learners."
+            },
+            {
+                school: "Ataka School Cycle 1",
+                role: "Substitute English Teacher (Teach for the UAE)",
+                period: "2019 – 2020",
+                duration: "3 Months",
+                type: "substitute",
+                level: "Cycle 1",
+                mode: "Online (Microsoft Teams)",
+                description: "Facilitated virtual English instruction on Microsoft Teams, ensuring consistent student engagement and individualized support."
+            },
+            {
+                school: "Aljwayria School Cycle 1",
+                role: "Substitute English Teacher (Teach for the UAE)",
+                period: "2018",
+                duration: "2 Months",
+                type: "substitute",
+                level: "Cycle 1",
+                mode: "In-Person",
+                description: "Supported foundational English language acquisition for primary-level students using active learning strategies."
+            },
+            {
+                school: "Asya Bint Muzahem School Cycle 2",
+                role: "Substitute English Teacher (Teach for the UAE)",
+                period: "2017 – 2018",
+                duration: "3 Months",
+                type: "substitute",
+                level: "Cycle 2",
+                mode: "In-Person",
+                description: "Returned to support Cycle 2 English instruction through the Teach for the UAE initiative."
+            },
+            {
+                school: "Asya Bint Muzahem for Basic Education Cycle 2",
+                role: "English Language Teacher",
+                period: "2014 – 2017",
+                duration: "3 Years",
+                type: "fulltime",
+                level: "Basic Education Cycle 2",
+                mode: "UAE Government School",
+                description: "Taught English language and literature, integrating the Sheikh Mohammad Bin Rashid Smart Learning Program and 21st-century classroom methodologies."
+            },
+            {
+                school: "Salma Bint Qais High School",
+                role: "English Language Teacher",
+                period: "2011 – 2013",
+                duration: "3 Years",
+                type: "fulltime",
+                level: "High School",
+                mode: "UAE Government School",
+                description: "Prepared secondary students for advanced academic proficiency in English reading, writing, and communication."
+            },
+            {
+                school: "Jumana Bint Abi Taleb Preparatory School",
+                role: "English Language Teacher",
+                period: "1993 – 2010",
+                duration: "17 Years",
+                type: "fulltime",
+                level: "Preparatory School",
+                mode: "UAE Government School",
+                description: "Dedicated 17-year tenure fostering foundational and intermediate English fluency, building strong parent-teacher partnerships and individualized student support."
+            }
+        ];
+
+        // Render Experience Items
+        function renderExperience(filter = 'all') {
+            const container = document.getElementById('experience-list');
+            container.innerHTML = '';
+
+            const filtered = experienceData.filter(item => filter === 'all' || item.type === filter);
+
+            filtered.forEach((item) => {
+                const isFullTime = item.type === 'fulltime';
+                const badgeClass = isFullTime 
+                    ? 'bg-brand-50 text-brand-800 dark:bg-brand-900/40 dark:text-brand-300 border-brand-200 dark:border-brand-800' 
+                    : 'bg-amber-50 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-800';
+                
+                const dotColor = isFullTime ? 'bg-brand-600' : 'bg-amber-500';
+
+                const card = document.createElement('div');
+                card.className = 'relative pl-6 sm:pl-8 group transition-all duration-300';
+                card.innerHTML = `
+                    <!-- Timeline Dot -->
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full ${dotColor} ring-4 ring-white dark:ring-slate-800 transition-transform group-hover:scale-125"></span>
+                    
+                    <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-700/30 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 border border-slate-100 dark:border-slate-700/60 transition">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <h3 class="font-bold text-base sm:text-lg text-slate-900 dark:text-white">${item.school}</h3>
+                            <div class="flex items-center gap-2 self-start sm:self-auto">
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold border ${badgeClass}">
+                                    ${item.period} (${item.duration})
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm font-medium text-brand-700 dark:text-brand-400 mb-2">
+                            <span>${item.role}</span>
+                            <span class="text-slate-300 dark:text-slate-600">•</span>
+                            <span class="text-slate-500 dark:text-slate-400">${item.mode}</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            ${item.description}
+                        </p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Filter Handler
+        function filterExperience(type) {
+            // Update active button styling
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-brand-800', 'dark:text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600', 'dark:text-slate-300');
+            });
+
+            const activeBtn = document.getElementById(`btn-${type}`);
+            activeBtn.classList.remove('text-slate-600', 'dark:text-slate-300');
+            activeBtn.classList.add('bg-white', 'dark:bg-slate-800', 'text-brand-800', 'dark:text-white', 'shadow-sm');
+
+            renderExperience(type);
+        }
+
+        // Copy to Clipboard using execCommand fallback (iFrame safe)
+        function copyText(text, label) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(`${label} copied: ${text}`);
+            } catch (err) {
+                showToast(`Could not copy ${label}`);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // Custom Toast Notification (No alert())
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2.5 transform transition-all duration-300 translate-y-2 opacity-0';
+            toast.innerHTML = `<i class="fas fa-check-circle text-emerald-400 dark:text-emerald-600"></i><span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Animate in
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            });
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Dark Mode Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                html.classList.add('dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderExperience('all');
+        });
+    </script>
+</body>
+</html>
